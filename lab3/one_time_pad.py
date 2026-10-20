@@ -1,3 +1,9 @@
+import secrets
+import string
+
+def randomword(length):
+    letters = string.ascii_uppercase
+    return ''.join(secrets.choice(letters) for _ in range(length))
 
 def encrypt(keyword: str, plaintext: str):
 	enc = ""
@@ -21,11 +27,14 @@ def decrypt(keyword: str, encyption: str):
 
 
 def main():
-	keyword = "NAKUL"
 	plaintext = "HELLOMYNAMEISNAKULKRISHNAKUMAR"
+	keyword = randomword(len(plaintext))
 
 	enc = encrypt(keyword=keyword, plaintext=plaintext)
 	print("Encryption: ", enc)
 
 	dec = decrypt(keyword=keyword, encyption=enc)
 	print("Decryption: ", dec)
+
+if __name__ == "__main__":
+	main()
